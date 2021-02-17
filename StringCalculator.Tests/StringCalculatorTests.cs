@@ -9,10 +9,9 @@ namespace StringCalculator.Tests
         public void Step_1_Returns_Zero_If_Parameter_Is_Empty_String()
         {
             // arrange
-            var calculator = new Calculator();
             var expected = 0;
             // act
-            var result = calculator.Add("");
+            var result = Calculator.Add("");
             // assert
             Assert.Equal(expected, result);
         }
