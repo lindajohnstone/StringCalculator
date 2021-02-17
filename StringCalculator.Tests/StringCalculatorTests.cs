@@ -15,5 +15,15 @@ namespace StringCalculator.Tests
             // assert
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void Step_2()
+        {
+            // arrange
+            var expected = 1;
+            // act
+            var result = Calculator.Add("1");
+            // assert
+            Assert.Equal(expected, result);
+        }
     }
 }
