@@ -16,7 +16,7 @@ namespace StringCalculator.Tests
             Assert.Equal(expected, result);
         }
         [Fact]
-        public void Step_2()
+        public void Step_2_single_number_returns_that_number()
         {
             // arrange
             var expected = 1;
