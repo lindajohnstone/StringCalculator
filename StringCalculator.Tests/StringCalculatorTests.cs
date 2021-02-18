@@ -25,5 +25,15 @@ namespace StringCalculator.Tests
             // assert
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void Two_numbers_return_the_sum_of_the_numbers()
+        {
+            // arrange 
+            var expected = 3;
+            // act
+            var result = Calculator.Add("1,2");
+            // assert
+            Assert.Equal(expected, result);
+        }
     }
 }

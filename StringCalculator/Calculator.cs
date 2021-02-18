@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StringCalculator
 {
@@ -16,7 +18,13 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
-            return int.Parse(numbers);
+            var value = numbers.Split(",");
+            var numberList = new List<int>();
+            foreach (var number in value)
+            {
+                numberList.Add(int.Parse(number));
+            }
+            return numberList.Sum();
         }
     }
 }
