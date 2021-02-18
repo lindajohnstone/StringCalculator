@@ -35,5 +35,6 @@ namespace StringCalculator.Tests
             // assert
             Assert.Equal(expected, result);
         }
+        
     }
 }
