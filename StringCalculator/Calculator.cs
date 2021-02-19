@@ -18,15 +18,7 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
-            
-            return Calculate(numbers.Split(","));
-            // var value = numbers.Split(",");
-            //  var numberList = new List<int>();
-            //  foreach (var number in value)
-            //  {
-            //      numberList.Add(int.Parse(number));
-            //  }
-            //  return numberList.Sum(); 
+            return Calculate(numbers.Replace("\n", ",").Split(","));
         }
 
         private static int Calculate(string[] nums)

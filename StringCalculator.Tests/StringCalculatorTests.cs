@@ -42,5 +42,12 @@ namespace StringCalculator.Tests
             var result = Calculator.Add("1,2,3");
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void New_line_breaks_and_commas_should_be_interchangeable_between_numbers()
+        {
+            var expected = 6;
+            var result = Calculator.Add("1,2\n3");
+            Assert.Equal(expected, result);
+        }
     }
 }
