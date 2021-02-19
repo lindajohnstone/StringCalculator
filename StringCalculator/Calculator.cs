@@ -31,10 +31,13 @@ namespace StringCalculator
 
         private static int Calculate(string[] nums)
         {
-            int firstNumber = int.Parse(nums[0]);
-            var secondNumber = nums.Count() >= 2 ? int.Parse(nums[1]) : 0;
-            var thirdNumber = nums.Count() == 3 ? int.Parse(nums[2]) : 0;
-            return firstNumber + secondNumber + thirdNumber;
+            IEnumerable<int> numbers = ParseAllToInt(nums);
+            return numbers.Sum();
+        }
+
+        private static IEnumerable<int> ParseAllToInt(string[] nums)
+        {
+            return nums.Select(int.Parse);
         }
     }
 }
