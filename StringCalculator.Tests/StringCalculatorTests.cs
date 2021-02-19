@@ -35,6 +35,12 @@ namespace StringCalculator.Tests
             // assert
             Assert.Equal(expected, result);
         }
-        
+        [Fact]
+        public void Any_amount_of_numbers_returns_the_sum_of_those_numbers()
+        {
+            var expected = 6;
+            var result = Calculator.Add("1,2,3");
+            Assert.Equal(expected, result);
+        }
     }
 }

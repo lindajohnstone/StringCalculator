@@ -18,19 +18,23 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
+            
             return Calculate(numbers.Split(","));
-            /* var value = numbers.Split(",").tolist();
-             var numberList = new List<int>();
-             foreach (var number in value)
-             {
-                 numberList.Add(int.Parse(number));
-             }
-             return numberList.Sum(); */
+            // var value = numbers.Split(",");
+            //  var numberList = new List<int>();
+            //  foreach (var number in value)
+            //  {
+            //      numberList.Add(int.Parse(number));
+            //  }
+            //  return numberList.Sum(); 
         }
 
         private static int Calculate(string[] nums)
         {
-            return int.Parse(nums[0]) + (nums.Count() == 2 ? int.Parse(nums[1]) : 0);
+            int firstNumber = int.Parse(nums[0]);
+            var secondNumber = nums.Count() >= 2 ? int.Parse(nums[1]) : 0;
+            var thirdNumber = nums.Count() == 3 ? int.Parse(nums[2]) : 0;
+            return firstNumber + secondNumber + thirdNumber;
         }
     }
 }
