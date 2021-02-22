@@ -18,12 +18,13 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
-            if (numbers.StartsWith("/"))
-            {
-                return Calculate(numbers.Substring(4).Split(";"));
-            }
-        
-            return Calculate(numbers.Replace("\n", ",").Split(","));
+            if (numbers.StartsWith("/")) return Calculate(numbers.Substring(4),';');
+            return Calculate(numbers.Replace("\n", ","), ',');
+        }
+
+        private static int Calculate(string numbers, char delimiter)
+        {
+            return Calculate(numbers.Split(delimiter));
         }
 
         private static int Calculate(string[] nums)
