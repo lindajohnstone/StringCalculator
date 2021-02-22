@@ -49,5 +49,10 @@ namespace StringCalculator.Tests
             var result = Calculator.Add("1,2\n3");
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void Support_single_character_delimiter()
+        {
+            Assert.Equal(3, Calculator.Add("//;\n1;2"));
+        }
     }
 }

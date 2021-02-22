@@ -18,6 +18,11 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
+            if (numbers.StartsWith("/"))
+            {
+                return Calculate(numbers.Substring(4).Split(";"));
+            }
+        
             return Calculate(numbers.Replace("\n", ",").Split(","));
         }
 
