@@ -21,12 +21,12 @@ namespace StringCalculator
         {
             if (numbers.StartsWith("/"))
             {
-                return Calculate(numbers.Substring(4), Convert.ToChar(numbers.Substring(2, 1)));
+                return Calculate(numbers.Substring(4), numbers.Substring(2, 1));
             }
-            return Calculate(numbers.Replace("\n", ","), ',');
+            return Calculate(numbers.Replace("\n", ","), ",");
         }
 
-        private static int Calculate(string numbers, char delimiter)
+        private static int Calculate(string numbers, string delimiter)
         {
             return Calculate(numbers.Split(delimiter));
         }
