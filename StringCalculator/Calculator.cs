@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace StringCalculator
 {
@@ -18,7 +19,11 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
-            if (numbers.StartsWith("/")) return Calculate(numbers.Substring(4),';');
+            if (numbers.StartsWith("/"))
+            {
+                var delimiter = Convert.ToChar(numbers.Substring(2, 1));
+                return Calculate(numbers.Substring(4), delimiter);
+            }
             return Calculate(numbers.Replace("\n", ","), ',');
         }
 
