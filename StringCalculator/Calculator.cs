@@ -21,8 +21,7 @@ namespace StringCalculator
         {
             if (numbers.StartsWith("/"))
             {
-                var delimiter = Convert.ToChar(numbers.Substring(2, 1));
-                return Calculate(numbers.Substring(4), delimiter);
+                return Calculate(numbers.Substring(4), Convert.ToChar(numbers.Substring(2, 1)));
             }
             return Calculate(numbers.Replace("\n", ","), ',');
         }
