@@ -43,9 +43,8 @@ namespace StringCalculator
 
         private static IEnumerable<int> ValidateNegativeNumber(IEnumerable<int> number)
         {
-            var numbers = number.Aggregate(":", 
-                (result, number) => number < 0 ? result + " " + number + "," : result).TrimEnd(',');
-            if(number.Any(x => x < 0)) throw new ArgumentException($"Negatives not allowed{numbers}");
+            if(number.Any(x => x < 0)) throw new ArgumentException(number.Aggregate("Negatives not allowed:",
+                (message, number) => number < 0 ? message + $" {number}," : message).Trim(','));
             return number;
         }
     }
