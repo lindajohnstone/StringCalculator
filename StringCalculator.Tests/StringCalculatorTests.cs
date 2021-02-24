@@ -56,6 +56,11 @@ namespace StringCalculator.Tests
         {
             Assert.Equal(expected, Calculator.Add(input));
         }
-        
+        [Fact]
+        public void Throws_Exception_When_Negative_Numbers_In_String()
+        {
+            var result = Assert.Throws<ArgumentException>(() => Calculator.Add("-1,2,-3"));
+            Assert.Equal("Negatives not allowed: -1, -3", result.Message);
+        }
     }
 }

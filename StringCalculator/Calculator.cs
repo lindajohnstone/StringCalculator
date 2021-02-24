@@ -33,13 +33,23 @@ namespace StringCalculator
 
         private static int Calculate(string[] nums)
         {
+            
             IEnumerable<int> numbers = ParseAllToInt(nums);
+
+            // if number is negative
+            // throw exception
             return numbers.Sum();
         }
 
         private static IEnumerable<int> ParseAllToInt(string[] nums)
         {
-            return nums.Select(int.Parse);
+            return ValidateNegativeNumber(nums.Select(int.Parse));
+        }
+
+        private static IEnumerable<int> ValidateNegativeNumber(IEnumerable<int> number)
+        {
+            if(number.Any(x => x < 0)) throw new ArgumentException("Negatives not allowed: ");
+            return number;
         }
     }
 }
