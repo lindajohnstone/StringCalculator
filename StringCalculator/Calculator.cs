@@ -19,13 +19,17 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
-            if(numbers.StartsWith("//["))
+            if (numbers.StartsWith("//["))
             {
-                return Calculate(numbers.Substring(numbers.IndexOf("\n")), numbers.Substring(3, (numbers.IndexOf("]")-3)));
+                string nums = numbers.Substring(numbers.IndexOf("\n"));
+                string delimiter = numbers.Substring((numbers.IndexOf("[") + 1), (numbers.IndexOf("]") - 3));
+                return Calculate(nums, delimiter);
             }
             if (numbers.StartsWith("/"))
             {
-                return Calculate(numbers.Substring(4), numbers.Substring(2, 1));
+                string nums = numbers.Substring(4);
+                string delimiter = numbers.Substring(2, 1);
+                return Calculate(nums, delimiter);
             }
             return Calculate(numbers.Replace("\n", ","), ",");
         }
