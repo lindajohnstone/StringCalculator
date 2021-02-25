@@ -19,6 +19,10 @@ namespace StringCalculator
 
         private static int Calculate(string numbers)
         {
+            if(numbers.StartsWith("//["))
+            {
+                return Calculate(numbers.Substring(8), numbers.Substring(3, 3));
+            }
             if (numbers.StartsWith("/"))
             {
                 return Calculate(numbers.Substring(4), numbers.Substring(2, 1));
@@ -35,8 +39,8 @@ namespace StringCalculator
         {
             IEnumerable<int> numbers = ParseAllToInt(nums);
             ValidateNegativeNumber(numbers);
-            numbers = GetNumbersLessThanThousand(numbers);
-            return numbers.Sum();
+            var lowNumbers = GetNumbersLessThanThousand(numbers);
+            return lowNumbers.Sum();
         }
 
         private static IEnumerable<int> GetNumbersLessThanThousand(IEnumerable<int> numbers)

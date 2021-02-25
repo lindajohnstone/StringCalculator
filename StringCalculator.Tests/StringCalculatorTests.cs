@@ -72,5 +72,13 @@ namespace StringCalculator.Tests
             var result = Calculator.Add("1000,1001,2");
             Assert.Equal(expected, result);
         }
+        [Theory]
+        [InlineData("//[***]\n1***2***3", 6)]
+        [InlineData("//[,]\n1,2,4", 7)]
+        public void Delimiters_can_be_of_any_length(string input, int expected)
+        {
+            var result = Calculator.Add(input);
+            Assert.Equal(expected, result);
+        }
     }
 }
