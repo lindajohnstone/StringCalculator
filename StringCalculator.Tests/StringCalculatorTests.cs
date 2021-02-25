@@ -74,11 +74,23 @@ namespace StringCalculator.Tests
         }
         [Theory]
         [InlineData("//[***]\n1***2***3", 6)]
-        [InlineData("//[,]\n1,2,4", 7)]
+        [InlineData("//[**]\n1**2**4", 7)]
         public void Delimiters_can_be_of_any_length(string input, int expected)
         {
             var result = Calculator.Add(input);
             Assert.Equal(expected, result);
+        }
+        [Fact]
+        public void Substring()
+        {
+            var input = "//[***]\n1***2***3";
+            var newInput = "//[,]\n1,2,4";
+            Assert.Equal(4, newInput.IndexOf("]"));
+            Assert.Equal(2, newInput.IndexOf("["));
+            Assert.Equal(2, input.IndexOf("["));
+            Assert.Equal(6, input.IndexOf("]"));
+            Assert.Equal("***", input.Substring(3, (input.IndexOf("]") - 3)));
+            Assert.Equal(",", newInput.Substring(3, newInput.IndexOf("]") - 3));
         }
     }
 }

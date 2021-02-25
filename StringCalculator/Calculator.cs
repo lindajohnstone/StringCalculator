@@ -21,7 +21,7 @@ namespace StringCalculator
         {
             if(numbers.StartsWith("//["))
             {
-                return Calculate(numbers.Substring(8), numbers.Substring(3, 3));
+                return Calculate(numbers.Substring(numbers.IndexOf("\n")), numbers.Substring(3, (numbers.IndexOf("]")-3)));
             }
             if (numbers.StartsWith("/"))
             {
