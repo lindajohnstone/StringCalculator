@@ -35,8 +35,16 @@ namespace StringCalculator
         {
             IEnumerable<int> numbers = ParseAllToInt(nums);
             ValidateNegativeNumber(numbers);
+            numbers = GetNumbersLessThanThousand(numbers);
             return numbers.Sum();
         }
+
+        private static IEnumerable<int> GetNumbersLessThanThousand(IEnumerable<int> numbers)
+        {
+            numbers = numbers.Where(x => x < 1000);
+            return numbers;
+        }
+
         private static IEnumerable<int> ParseAllToInt(string[] nums)
         {
             return nums.Select(int.Parse);
@@ -44,10 +52,9 @@ namespace StringCalculator
 
         private static void ValidateNegativeNumber(IEnumerable<int> numbers)
         {
-            //[1 , 2, -1, -2]
             var negativeNumbers = numbers.Where(x => x < 0);
-            //[-1, -2] a > 0 ? a : 0
-            if (negativeNumbers.Count() > 0) throw new ArgumentException(String.Concat("Negatives not allowed: ", String.Join(", ", negativeNumbers)));
+            if (negativeNumbers.Count() > 0) throw new ArgumentException(
+                String.Concat("Negatives not allowed: ", String.Join(", ", negativeNumbers)));
         }
     }
 }

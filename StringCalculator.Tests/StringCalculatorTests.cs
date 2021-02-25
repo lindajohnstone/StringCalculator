@@ -65,5 +65,12 @@ namespace StringCalculator.Tests
             var result = Assert.Throws<ArgumentException>(() => Calculator.Add(input));
             Assert.Equal(expected, result.Message);
         }
+        [Fact]
+        public void Numbers_greater_or_equal_to_1000_should_be_ignored()
+        {
+            var expected = 2;
+            var result = Calculator.Add("1000,1001,2");
+            Assert.Equal(expected, result);
+        }
     }
 }
