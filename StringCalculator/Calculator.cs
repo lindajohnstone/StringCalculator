@@ -34,18 +34,20 @@ namespace StringCalculator
         private static int Calculate(string[] nums)
         {
             IEnumerable<int> numbers = ParseAllToInt(nums);
+            ValidateNegativeNumber(numbers);
             return numbers.Sum();
         }
         private static IEnumerable<int> ParseAllToInt(string[] nums)
         {
-            return ValidateNegativeNumber(nums.Select(int.Parse));
+            return nums.Select(int.Parse);
         }
 
-        private static IEnumerable<int> ValidateNegativeNumber(IEnumerable<int> number)
+        private static void ValidateNegativeNumber(IEnumerable<int> numbers)
         {
-            if(number.Any(x => x < 0)) throw new ArgumentException(number.Aggregate("Negatives not allowed:",
-                (message, number) => number < 0 ? message + $" {number}," : message).Trim(','));
-            return number;
+            //[1 , 2, -1, -2]
+            var negativeNumbers = numbers.Where(x => x < 0);
+            //[-1, -2] a > 0 ? a : 0
+            if (negativeNumbers.Count() > 0) throw new ArgumentException(String.Concat("Negatives not allowed: ", String.Join(", ", negativeNumbers)));
         }
     }
 }
