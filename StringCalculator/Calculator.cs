@@ -39,14 +39,8 @@ namespace StringCalculator
         {
             IEnumerable<int> numbers = ParseAllToInt(nums);
             ValidateNegativeNumber(numbers);
-            var lowNumbers = GetNumbersLessThanThousand(numbers);
+            var lowNumbers = numbers.Where(x => x < 1000);
             return lowNumbers.Sum();
-        }
-
-        private static IEnumerable<int> GetNumbersLessThanThousand(IEnumerable<int> numbers)
-        {
-            numbers = numbers.Where(x => x < 1000);
-            return numbers;
         }
 
         private static IEnumerable<int> ParseAllToInt(string[] nums)
