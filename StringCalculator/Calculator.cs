@@ -24,35 +24,25 @@ namespace StringCalculator
             var delimiterStartIndex = 0;
             var length = 0;
             var delimiter = "";
+            if (!numbers.StartsWith("/"))
+            {
+                return Calculate(numbers.Replace("\n", ","), ",");
+            }
+            numberStartIndex = numbers.IndexOf("\n");
+            nums = numbers.Substring(numberStartIndex);
+            
             if (numbers.StartsWith("//["))
             {
-                numberStartIndex = numbers.IndexOf("\n");
-                nums = numbers.Substring(numberStartIndex);
                 delimiterStartIndex = (numbers.IndexOf("[") + 1);
                 length = numbers.IndexOf("]") - 3;
-                delimiter = numbers.Substring(delimiterStartIndex, length);
-                return Calculate(nums, delimiter);
             }
-            if (numbers.StartsWith("/"))
+            else
             {
-                numberStartIndex = 4;
-                nums = numbers.Substring(numberStartIndex);
                 delimiterStartIndex = 2;
                 length = 1;
-                delimiter = numbers.Substring(delimiterStartIndex, length);
-                return Calculate(nums, delimiter);
             }
-            /* if (numbers.StartsWith(string of characters))
-            {
-                int numberStartIndex = 4 or numbers.IndexOf("\n)
-                string nums = numbers.Substring(numberStartIndex)
-                int delimiterStartIndex = 2 or (numbers.IndexOf("[") + 1)
-                int length = 1 or (numbers.IndexOf("]") - 3)
-                string delimiter = numbers.Substring(delimiterStartIndex, length)
-                return Calculate(nums, delimiter)
-            } 
-            */
-            return Calculate(numbers.Replace("\n", ","), ",");
+            delimiter = numbers.Substring(delimiterStartIndex, length);
+            return Calculate(nums, delimiter);
         }
 
         private static int Calculate(string numbers, string delimiter)
