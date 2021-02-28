@@ -28,19 +28,20 @@ namespace StringCalculator
             {
                 return Calculate(numbers.Replace("\n", ","), ",");
             }
+
             numberStartIndex = numbers.IndexOf("\n");
             nums = numbers.Substring(numberStartIndex);
-            
             if (numbers.StartsWith("//["))
             {
-                delimiterStartIndex = (numbers.IndexOf("[") + 1);
-                length = numbers.IndexOf("]") - 3;
+                delimiterStartIndex = numbers.IndexOf("[") + 1;
+                length = numbers.IndexOf("]") - delimiterStartIndex;
             }
             else
             {
                 delimiterStartIndex = 2;
                 length = 1;
             }
+            
             delimiter = numbers.Substring(delimiterStartIndex, length);
             return Calculate(nums, delimiter);
         }
